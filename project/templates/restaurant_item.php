@@ -4,7 +4,7 @@
 			echo '<h1>' . $result['name'] . '</h1>';
 			echo '<p>' . $result['location'] . '</p>';
 			echo '<p>' . $result['category'] . '</p>';
-			echo '<p>' . $result['idOwner'] . '</p>';
+			echo '<p>' . $result['open'] . '-' . $result['end'] . '</p>';
 		?>
 	</div>
 </div>

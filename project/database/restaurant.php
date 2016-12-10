@@ -8,14 +8,14 @@
 
 	function getRestaurantItem($db, $id){
 		$stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = ?');
-		$stmt->execute();
-		$result = $stmt->fetchAll();
+		$stmt->execute($id);
+		$result = $stmt->fetch();
 		return $result;
 	}
 
 	function getRestaurantFromOwner($db, $owner){
 		$stmt = $db->prepare('SELECT * FROM Restaurant WHERE idOwner = ?');
-		$stmt->execute();
+		$stmt->execute(array($owner));
 		$result = $stmt->fetchAll();
 		return $result;
 	}
