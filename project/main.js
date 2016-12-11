@@ -15,6 +15,11 @@ $(function() {
     });
 });
 
+$(function() {
+    $("#restaurantsOwner").click(function() {
+        window.location = "owner_restaurants.php";
+    });
+});
 
 $(function() {
     $("#restaurantAdd").click(function() {
