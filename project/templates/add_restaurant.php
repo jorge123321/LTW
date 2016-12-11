@@ -18,6 +18,7 @@
 			Description:<br>
 			<textarea rows="5" cols="50" placeholder="Add a short description">
 			</textarea>
+			<button type="submit"> Create </button>
 		</form>
 	</div>
 </div>

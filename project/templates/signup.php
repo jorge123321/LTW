@@ -12,14 +12,19 @@
 			Age:<br>
 			<input type="number" name="age" value="25" min="18" max="90" step="1"><br>
 			Gender:<br>
-			<input type="radio" name="gender" value="male" checked="checked">Male
-			<input type="radio" name="gender" value="female">Female<br>
+			<div>
+				<input type="radio" name="gender" value="male">Male
+				<input type="radio" name="gender" value="female">Female<br>
+			</div>
 			Photo:<br>
 			<input type="text" name="photo" value="required">
 			Type:<br>
-			<input type="radio" name="type" value="reviewer" checked="checked">Reviewer
-			<input type="radio" name="type" value="owner">Owner<br>
+			<div>
+				<input type="radio" name="type" value="reviewer">Reviewer
+				<input type="radio" name="type" value="owner">Owner<br>
+			</div>
 			<button type="submit"> Register </button>
+			
 		</form>
 	</div>
 </div>

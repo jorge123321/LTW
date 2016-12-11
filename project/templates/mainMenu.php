@@ -25,9 +25,9 @@
 					include_once getcwd() . "/database/connection.php";
 					include_once getcwd() . "/database/restaurant.php";
 					$result = getAllCategories($db);
-				
+					
 					foreach($result as $row) {
-						echo '<li>$row</li>';
+						echo '<li> '. $row['category']. '</li>';
 					}
 				?>
 			</ul>

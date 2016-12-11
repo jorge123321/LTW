@@ -14,8 +14,10 @@
 					<li><button id="home" type="button"> Home</button></li>
 					<?php
 					if (isset($_SESSION['idUser'])){
-						if($_SESSION['type'] == 'owner')
+						if($_SESSION['type'] == 'owner'){
 								echo '<li><button id="restaurantsOwner" type="button">My Restaurants</a></li>';
+								echo '<li><button id="restaurantAdd" type="button">Add Restaurant</a></li>';
+						}
 						echo '<li><button id="myacc" type="button">My Account</button></li>';
 						echo '<li><button id="logout" type="button">Logout</a></li>';
 					}

@@ -7,7 +7,6 @@ PRAGMA foreign_keys = on;
 CREATE TABLE User(
 	idUser TEXT PRIMARY KEY, 
 	name TEXT UNIQUE NOT NULL,
-	pass TEXT NOT NULL, 
 	age INTEGER NOT NULL CHECK (age > 18), 
 	gender BOOLEAN NOT NULL, 
 	photo TEXT NOT NULL,
@@ -32,6 +31,9 @@ INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description,idOwner) VALUES (1, 'Flow Restaurant & Bar', 'Cedofeita', 35, 'Mediterranica', '20:00', '24:00','', 'paulosilva');
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description,idOwner) VALUES (2, 'DeGema', 'Baixa', 10, 'Hamburgueria', '12:00' ,'24:00','', 'paulosilva');
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,description, idOwner) VALUES (3, 'Costa Coffee', 'Baixa', 4, 'Pastelaria', '09:00' ,'24:00', '','paulosilva');
+INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,description, idOwner) VALUES (4, 'teste', 'Baixa', 4, 'Pastelaria', '09:00' ,'24:00', '','paulosilva');
+INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,description, idOwner) VALUES (5, 'teste1', 'Baixa', 4, 'kek', '09:00' ,'24:00', '','paulosilva');
+
 
 CREATE TABLE RestaurantReview(
 	idUser TEXT NOT NULL REFERENCES User(idUser), 

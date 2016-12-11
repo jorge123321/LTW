@@ -17,6 +17,13 @@ $(function() {
 
 
 $(function() {
+    $("#restaurantAdd").click(function() {
+        window.location = "add_restaurant.php";
+    });
+});
+
+
+$(function() {
     $("#myacc").click(function() {
         window.location = "profile.php";
     });
