@@ -7,6 +7,7 @@ PRAGMA foreign_keys = on;
 CREATE TABLE User(
 	idUser TEXT PRIMARY KEY, 
 	name TEXT UNIQUE NOT NULL,
+	pass TEXT NOT NULL,
 	age INTEGER NOT NULL CHECK (age > 18), 
 	gender BOOLEAN NOT NULL, 
 	photo TEXT NOT NULL,
