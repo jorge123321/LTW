@@ -3,19 +3,23 @@
 	
 	<div id="signupForm">
 		<form id="submit" action="signup_action.php" method="post">
+			Username:<br>
+			<input type="text" name="username" value="required"><br>
 			Name:<br>
 			<input type="text" name="name" value="required"><br>
 			Pass:<br>
 			<input type="password" name="pass" value="required"><br>
 			Age:<br>
-			<input type="text" name="age" value="required"><br>
+			<input type="number" name="age" value="25" min="18" max="90" step="1"><br>
 			Gender:<br>
 			<input type="radio" name="gender" value="male" checked="checked">Male
 			<input type="radio" name="gender" value="female">Female<br>
+			Photo:<br>
+			<input type="text" name="photo" value="required">
 			Type:<br>
 			<input type="radio" name="type" value="reviewer" checked="checked">Reviewer
 			<input type="radio" name="type" value="owner">Owner<br>
-			<button class= "button_1" type="submit"> Register </button>
+			<button type="submit"> Register </button>
 		</form>
 	</div>
 </div>

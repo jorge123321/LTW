@@ -10,7 +10,7 @@ CREATE TABLE User(
 	pass TEXT UNIQUE NOT NULL, 
 	age INTEGER NOT NULL CHECK (age > 18), 
 	gender BOOLEAN NOT NULL, 
-	photo STRING NOT NULL,
+	photo TEXT NOT NULL,
 	type TEXT NOT NULL);
 
 INSERT INTO User(idUser, name, pass, age, gender, photo, type) VALUES ('paulosilva', 'Paulo Silva','testpass', 30, 'Male', 'photo1', 'owner');

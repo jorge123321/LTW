@@ -12,12 +12,11 @@
 			Category:<br>
 			<input type="text" name="category" value="required"><br>
 			Opening Hours:<br>
-			<input type ="number" value="00" min="00" max="24" step="1"><br>
+			<input type ="number" name="close" min="0" max="24" step="1"><br>
 			Closing Hours:<br>
-			<input type ="number" value="00" min="00" max="24" step="1"><br>
+			<input type ="number" name="close" min="0" max="24" step="1"><br>
 			Description:<br>
-			<textarea rows="5" cols="50">
-			Put a small description of the restaurant here.
+			<textarea rows="5" cols="50" placeholder="Add a short description">
 			</textarea>
 		</form>
 	</div>

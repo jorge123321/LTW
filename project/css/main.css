@@ -72,4 +72,14 @@ img{
 	width:15%;
 }
 
+#loginForm{
+	display: none;
+	position: fixed;
+	top: 32%;
+	left:50%;
+	width:200px;
+	color: #ffffff;
+	padding:20px;
+	border-radius: 30px;
+}
 

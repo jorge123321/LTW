@@ -1,5 +1,8 @@
 <div id="content">
 	<div id = "mainMenu">
+			<form id="rsearch" action="" method="post"> 
+				<input id="srestaurant" type="text"  placeholder="Search for a restaurant.. " >
+			</form>
 		<ul>
 			<?php
 				include_once getcwd() . "/database/connection.php";
