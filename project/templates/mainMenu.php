@@ -21,8 +21,14 @@
 	<div class="sidebar">
 			<h2>Categorias</h2>
 			<ul class="toolbar">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
+				<?php
+					include_once getcwd() . "/database/connection.php";
+					include_once getcwd() . "/database/restaurant.php";
+					$result = getAllCategories($db);
+				
+					foreach($result as $row) {
+						echo '<li>$row</li>';
+					}
+				?>
 			</ul>
 	</div>
