@@ -21,7 +21,7 @@
 	}
 	
 	function getAllCategories($db){
-		$stmt = $db->prepare('SELECT * FROM Category');
+		$stmt = $db->prepare('SELECT category FROM Restaurant GROUP BY category');
 		$stmt->execute();
 		$result = $stmt->fetchAll();
 		return $result;
