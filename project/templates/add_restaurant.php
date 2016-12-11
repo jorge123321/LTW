@@ -2,7 +2,7 @@
 	<h1> Make your own Restaurant</h1>
 	
 	<div id="addRestaurant">
-		<form id="submit" action="" method="post">
+		<form id="submit" action="add_restaurant_action.php" method="post">
 			Name:<br>
 			<input type="text" name="name" value="required"><br>
 			Location:<br>
