@@ -28,3 +28,10 @@ $(function() {
         window.location = "signup.php";
     });
 });
+
+
+$(function() {
+    $("#logout").click(function() {
+        window.location = "logout_action.php";
+    });
+});

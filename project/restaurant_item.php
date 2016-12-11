@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include_once('database/connection.php');
 	include_once('database/restaurant.php');
 	$result = getRestaurantItem($db, array($_GET['id']));
