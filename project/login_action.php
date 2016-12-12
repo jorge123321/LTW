@@ -1,7 +1,7 @@
 <?php
 	include_once('database/connection.php');
 	$stmt = $db->prepare('SELECT idUser, name, pass, age, gender, photo, type FROM User WHERE idUser = ? AND pass = ?');
-	$stmt->execute(array($_POST['username'],sha1($_POST['password'])));
+	$stmt->execute(array($_POST['username'],sha1($_POST['pass'])));
 	$result = $stmt->fetch();
 	if ($result != null){
 		session_start();

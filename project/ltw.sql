@@ -6,7 +6,7 @@ PRAGMA foreign_keys = on;
 
 CREATE TABLE User(
 	idUser TEXT PRIMARY KEY, 
-	name TEXT UNIQUE NOT NULL,
+	name TEXT  NOT NULL,
 	pass TEXT NOT NULL,
 	age INTEGER NOT NULL CHECK (age > 18), 
 	gender BOOLEAN NOT NULL, 
@@ -23,8 +23,8 @@ CREATE TABLE Restaurant(
 	location TEXT NOT NULL, 
 	price INTEGER, 
 	category TEXT,
-	open TEXT NOT NULL,
-	end TEXT NOT NULL,
+	open INTEGER NOT NULL,
+	end INTEGER NOT NULL,
 	description TEXT,
 	idOwner TEXT NOT NULL REFERENCES User(idUser));
 

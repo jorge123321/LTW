@@ -22,9 +22,10 @@
 	
 	if ( ( $_POST['cpass'] && $_POST['npass'] && $_POST['npass2']  ) != ""){
 		$stmt = $db->prepare("SELECT pass FROM User WHERE idUser = ?");
-		$stmt->execute($_SESSION['idUser']);
+		$stmt->execute(array($_SESSION['idUser']));
+		echo '<p>'.$_SESSION['idUser'].'</p><br>';
 		$result = $stmt->fetch();
-		
+		echo '<p>'.$result['pass'].'</p><br>';
 		if (($_POST['npass'] == $_POST['npass2']) && (sha1($_POST['cpass']) == $result['pass']) )
 		{
 			$stmt = $db->prepare("UPDATE User SET pass=? WHERE idUser=?");
@@ -34,7 +35,6 @@
 		else{
 			echo '<p>Incorrect current password/ New password does not match. </p><br>';
 		}
-		
 	}	
 ?>
 	</div>
