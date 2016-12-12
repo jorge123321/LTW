@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <div id="content">
 	<h1> Make your own Restaurant</h1>
 	
