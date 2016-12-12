@@ -12,11 +12,11 @@
 			Category:<br>
 			<input type="text" name="category" value="required"><br>
 			Opening Hours:<br>
-			<input type ="number" name="close" min="0" max="24" step="1"><br>
+			<input type ="number" name="open" min="0" max="24" step="1"><br>
 			Closing Hours:<br>
 			<input type ="number" name="close" min="0" max="24" step="1"><br>
 			Description:<br>
-			<textarea rows="5" cols="50" placeholder="Add a short description">
+			<textarea name="description" rows="5" cols="50" placeholder="Add a short description">
 			</textarea>
 			<button type="submit"> Create </button>
 		</form>
