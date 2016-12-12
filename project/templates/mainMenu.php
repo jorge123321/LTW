@@ -10,8 +10,15 @@
 				$result = getAllRestaurant($db);
 			
 				foreach( $result as $row) {
-					echo '<li><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></li>';
+			?>
+				<div id = "rest">
+			<?php
+					echo '<p><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></p>';
+					echo '<p>Category:' .$row['category']. ' Situated on: ' . $row['location'] . '<p>';
 					echo '<img src="images/background" alt="Image" width="150px">';
+			?>
+				</div>
+			<?php
 				}
 			?>
 		</ul>
