@@ -25,7 +25,7 @@ CREATE TABLE Restaurant(
 	category TEXT,
 	open INTEGER NOT NULL,
 	end INTEGER NOT NULL,
-	description VARCHAR,
+	description TEXT,
 	idOwner TEXT NOT NULL REFERENCES User(idUser));
 
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (0, 'Brasão Cervejaria', 'Baixa', 15, 'Portuguesa', '12:00', '24:00','', 'paulosilva');
@@ -41,5 +41,5 @@ CREATE TABLE RestaurantReview(
 	idReviewer INTEGER REFERENCES User(idUser),
 	idRestaurant INTEGER REFERENCES Restaurant(idRestaurant), 
 	score NUMBER CHECK (score >= 0 AND score<=5), 
-	text VARCHAR);
+	text STRING);
 INSERT INTO RestaurantReview(idReview, idReviewer, idRestaurant, score, text) VALUES (0,'tomastav', 1, 5, 'Muito bom');
