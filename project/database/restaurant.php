@@ -44,4 +44,11 @@
  		$stmt = $db->prepare('DELETE FROM Restaurant WHERE idRestaurant = ?');
  		$stmt->execute($idRestaurant);
  	}
+
+	function averageScoreRestaurant($db,$idRestaurant) {
+ 		$stmt = $db->prepare('SELECT avg(score) FROM RestaurantReview WHERE idRestaurant = ?');
+ 		$stmt->execute($idRestaurant);
+		$result = $stmt->fetch();
+		return $result;
+ 	}
 ?>	
