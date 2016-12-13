@@ -26,4 +26,15 @@
 		$result = $stmt->fetchAll();
 		return $result;
 	}
+
+	function deleteReview($db,$idRestaurant) {
+		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
+		$stmt->execute($idRestaurant);
+	}
+	
+	function deleteRestaurant($db,$idRestaurant) {
+		deleteReview($db,$idRestaurant);
+		$stmt = $db->prepare('DELETE FROM Restaurant WHERE idRestaurant = ?');
+		$stmt->execute($idRestaurant);
+	}
 ?>	
