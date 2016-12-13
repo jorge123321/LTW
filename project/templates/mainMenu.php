@@ -1,7 +1,7 @@
 <div id="content">
 	<div id = "mainMenu">
-			<form id="rsearch" action="" method="post"> 
-				<input id="srestaurant" type="text"  placeholder="Search for a restaurant.. " >
+			<form id="rsearch" action="search_bar_action.php" method="post"> 
+				<input id="srestaurant" name="rest_name" type="text"  placeholder="Search for a restaurant.. " >
 			</form>
 		<ul>
 			<?php
