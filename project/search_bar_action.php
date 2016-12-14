@@ -18,9 +18,11 @@
 				$result = getAllRestaurant($db);
 				$search = $_POST['rest_name'];		
 				$countResults = 0;
-				
+				setlocale(LC_ALL, "en_US.utf8");
+				$search = iconv('UTF-8', 'ASCII//TRANSLIT', $search);
 				foreach( $result as $row) {
 					$rest_name = $row['name'];
+					$rest_name = iconv('UTF-8', 'ASCII//TRANSLIT', $rest_name);
 					if ( (strpos( strtolower($rest_name) , strtolower($search)) !== false ) 
 						&& (strlen(trim($search)) != 0) ){
 						$countResults++;
