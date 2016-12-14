@@ -34,6 +34,20 @@
 		return $result;
 	}
 	
+	function getRestaurantReviewItem($db, $idReview){
+		$stmt = $db->prepare('SELECT * FROM RestaurantReview WHERE idReview = ?');
+		$stmt->execute($idReview);
+		$result = $stmt->fetch();
+		return $result;
+	}
+	
+	function getReply($db, $idReview){
+		$stmt = $db->prepare('SELECT * FROM Reply WHERE idReview = ?');
+		$stmt->execute(array($idReview));
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	
 	function deleteReview($db,$idRestaurant) {
  		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
  		$stmt->execute($idRestaurant);

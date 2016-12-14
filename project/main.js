@@ -47,3 +47,14 @@ $(function() {
         window.location = "logout_action.php";
     });
 });
+
+$(function() {
+    $("#reply_button").click(function() {
+        if($("#replyForm").css("display") == "none") {
+			$("#replyForm ").css("display", "block");
+		}
+		else{
+			$("#replyForm ").css("display", "none");
+		}
+    });
+});

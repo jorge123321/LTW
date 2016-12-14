@@ -38,8 +38,16 @@ INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,
 
 CREATE TABLE RestaurantReview(
 	idReview INTEGER PRIMARY KEY AUTOINCREMENT,
-	idReviewer INTEGER REFERENCES User(idUser),
+	idReviewer TEXT NOT NULL REFERENCES User(idUser),
 	idRestaurant INTEGER REFERENCES Restaurant(idRestaurant), 
 	score NUMBER CHECK (score >= 0 AND score<=5), 
 	text VARCHAR);
 INSERT INTO RestaurantReview(idReview, idReviewer, idRestaurant, score, text) VALUES (0,'tomastav', 1, 5, 'Muito bom');
+
+CREATE TABLE Reply(
+	idReply INTEGER PRIMARY KEY AUTOINCREMENT,
+	idReview INTEGER REFERENCES RestaurantReview(idReview),
+	idReplyer TEXT NOT NULL REFERENCES User(idUser),
+	text VARCHAR
+);
+
