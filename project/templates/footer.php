@@ -1,5 +1,5 @@
 <div id="footer">
-				<p> LTW 16/17 </p>
+	<div id="footer_text"><p> LTW 16/17 </p></div>
 </div>
 </body>
 </html>
