@@ -74,6 +74,14 @@
  		$stmt->execute(array($idRestaurant));
  	}
 
+	function deleteUser($db,$idUser) {
+ 		$restaurants = getRestaurantFromOwner($db,$idUser);
+		foreach ($restaurants as $restaurant)
+			deleteRestaurant($db,$restaurant['idRestaurant']);
+ 		$stmt = $db->prepare('DELETE FROM User WHERE idUser = ?');
+ 		$stmt->execute(array($idUser));
+ 	}
+
 	function averageScoreRestaurant($db,$idRestaurant) {
  		$stmt = $db->prepare('SELECT avg(score) FROM RestaurantReview WHERE idRestaurant = ?');
  		$stmt->execute(array($idRestaurant));
