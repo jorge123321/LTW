@@ -11,7 +11,7 @@
 		<div id="sitename">RReview</div>
 		<form id="loginform" action="" method="post">
 		<input id="username" type="text"  placeholder="username" required></br>
-		<input id="password" type="text" placeholder="password" required></br>
+		<input id="password" type="password" placeholder="password" required></br>
 		<input id="name" type="text" placeholder="name" required></br>
 		<input id="age" type="text" placeholder="age" required></br></br>
 		<div id="userchoice">
