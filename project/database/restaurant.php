@@ -1,4 +1,9 @@
 <?php
+
+	include_once("database/review.php");
+	include_once("database/reply.php");
+	include_once("database/user.php");
+	
 	function getAllRestaurant($db){
 		$stmt = $db->prepare('SELECT * FROM Restaurant');
 		$stmt->execute();
@@ -33,46 +38,6 @@
 		$result = $stmt->fetchAll();
 		return $result;
 	}
-	
-	function getRestaurantReview($db, $idRestaurant){
-		$stmt = $db->prepare('SELECT * FROM RestaurantReview WHERE idRestaurant = ?');
-		$stmt->execute(array($idRestaurant));
-		$result = $stmt->fetchAll();
-		return $result;
-	}
-	
-	function getRestaurantReviewItem($db, $idReview){
-		$stmt = $db->prepare('SELECT * FROM RestaurantReview WHERE idReview = ?');
-		$stmt->execute($idReview);
-		$result = $stmt->fetch();
-		return $result;
-	}
-	
-	function getReply($db, $idReview){
-		$stmt = $db->prepare('SELECT * FROM Reply WHERE idReview = ?');
-		$stmt->execute(array($idReview));
-		$result = $stmt->fetchAll();
-		return $result;
-	}
-	
-	function deleteReply($db,$idReview) {
- 		$stmt = $db->prepare('DELETE FROM Reply WHERE idReview = ?');
- 		$stmt->execute(array($idReview));
- 	}
-
-	function deleteReview($db,$idRestaurant) {
-		$reviews = getRestaurantReview($db,$idRestaurant);
-		foreach ($reviews as $review)
-			deleteReply($db,$review['idReview']);
- 		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
- 		$stmt->execute(array($idRestaurant));
- 	}
-	
-	function deleteReviewItem($db, $idReview){
-		deleteReply($db, $idReview);
-		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idReview = ?');
-		$stmt->execute(array($idReview));	
-	}
  	
  	function deleteRestaurant($db,$idRestaurant) {
  		deleteReview($db,$idRestaurant);
@@ -80,13 +45,6 @@
  		$stmt->execute(array($idRestaurant));
  	}
 
-	function deleteUser($db,$idUser) {
- 		$restaurants = getRestaurantFromOwner($db,$idUser);
-		foreach ($restaurants as $restaurant)
-			deleteRestaurant($db,$restaurant['idRestaurant']);
- 		$stmt = $db->prepare('DELETE FROM User WHERE idUser = ?');
- 		$stmt->execute(array($idUser));
- 	}
 
 	function averageScoreRestaurant($db,$idRestaurant) {
  		$stmt = $db->prepare('SELECT avg(score) FROM RestaurantReview WHERE idRestaurant = ?');
@@ -102,11 +60,6 @@
 		return $result;
 	}
 	
-	function searchReview($db, $idRestaurant, $idUser){
-		$stmt = $db->prepare('SELECT * FROM RestaurantReview WHERE idReviewer = ? AND idRestaurant=?');
-		$stmt->execute(array($idUser, $idRestaurant));
-		$result = $stmt->fetch();
-		return $result;
-	}
+
 	
 ?>	

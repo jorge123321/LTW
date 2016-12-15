@@ -2,7 +2,7 @@
 	session_start();
 	include ('templates/header.php');  
 	include_once('database/connection.php');
-	include_once('database/restaurant.php');
+	include_once('database/user.php');
 	
 	
 	?>
@@ -11,29 +11,23 @@
 	if (isset($_POST['update'])) {
 	
 	if ($_SESSION['name'] != $_POST['name']){
-		$stmt = $db->prepare("UPDATE User SET name=? WHERE idUser=?");
-		$stmt->execute(array($_POST['name'],$_SESSION['idUser']));
+		updateName($db, $_POST['name'],$_SESSION['idUser']);
 		$_SESSION['name'] = $_POST['name'];
 		echo '<p>Name changed.</p><br>';
 	}
 	
 	if ($_SESSION['age'] != $_POST['age']){
-		$stmt = $db->prepare("UPDATE User SET age=? WHERE idUser=?");
-		$stmt->execute(array($_POST['age'],$_SESSION['idUser']));
+		updateAge($db, $_POST['age'],$_SESSION['idUser']);
 		$_SESSION['age'] = $_POST['age'];
 		echo '<p>Age changed.</p><br>';
 	}
 	
 	if ( ( $_POST['cpass'] && $_POST['npass'] && $_POST['npass2']  ) != ""){
-		$stmt = $db->prepare("SELECT pass FROM User WHERE idUser = ?");
-		$stmt->execute(array($_SESSION['idUser']));
-		echo '<p>'.$_SESSION['idUser'].'</p><br>';
-		$result = $stmt->fetch();
-		echo '<p>'.$result['pass'].'</p><br>';
+		$result = getPass($db, $_SESSION['idUser']);
+		
 		if (($_POST['npass'] == $_POST['npass2']) && (sha1($_POST['cpass']) == $result['pass']) )
 		{
-			$stmt = $db->prepare("UPDATE User SET pass=? WHERE idUser=?");
-			$stmt->execute(array(sha1($_POST['npass']),$_SESSION['idUser']));
+			updatePass($db, sha1($_POST['npass']),$_SESSION['idUser']);
 			echo '<p>Password changed successfully.</p><br>';
 		}
 		else{
