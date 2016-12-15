@@ -88,4 +88,11 @@
 		$result = $stmt->fetch();
 		return $result;
  	}
+	
+	function getPhotos($db, $idRestaurant){
+		$stmt = $db->prepare('SELECT * FROM Photo WHERE idRestaurant = ?');
+		$stmt->execute(array($idRestaurant));
+		$result = $stmt->fetchAll();
+		return $result;
+	}
 ?>	

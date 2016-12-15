@@ -62,6 +62,18 @@
 				}
 			}			
 		?>
+		<div id="photos">
+			<?php				
+				$photos = getPhotos($db, $_GET['id']);
+				$i=0;
+			if(photos != NULL){
+				foreach($photos as $photo){
+					echo '<img src="images/' . $result['name'] . '_' .$i. '" width="150px" height="150px">';
+					$i++;
+				}
+			}
+			?>
+		</div>
 		<h3>Check location on google maps here!</h3>
 		<div id="map"></div>
 	</div>
