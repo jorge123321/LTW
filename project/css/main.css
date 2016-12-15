@@ -148,6 +148,11 @@ a{
 	text-align:center;
 }
 
+#map {
+	padding-bottom : 50%;
+	width: 100%;
+	height:50%;
+}
 
 #srestaurant{
 	opacity:0.6;

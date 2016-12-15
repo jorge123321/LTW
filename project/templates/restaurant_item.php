@@ -8,7 +8,7 @@
 		
 			echo '<h1> Owner: ' . $result['idOwner'] . '</h1>';
 			echo '<h1> Name: ' . $result['name'] . '</h1>';
-			echo '<p> Location : ' . $result['location'] . '</p>';
+			echo '<p id = location> Location : ' . $result['location'] . '</p>';
 			echo '<p> Category: ' . $result['category'] . '</p>';
 			echo '<p> Working hours: ' . $result['open'] . '-' . $result['end'] . '</p>';
 			echo '<p> Description: ' . $result['description'] . '</p>';
@@ -61,5 +61,42 @@
 				}
 			}			
 		?>
+		<h3>Check location on google maps here!</h3>
+    <div id="map"></div>
 	</div>
 </div>
+
+<script>
+	function initMap() {
+		 var latlng = new google.maps.LatLng(41.149, -8.610);
+		var mapOptions = {
+			zoom: 8,
+			center: latlng
+		}
+		var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		var geocoder = new google.maps.Geocoder();
+		var address = document.getElementById('location').innerHTML;
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status == 'OK') {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+				map: map,
+				position: results[0].geometry.location
+				});
+			} else {
+				alert('Geocode was not successful for the following reason: ' + status);
+			}		
+		});
+		var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 4,
+		center: uluru
+		});
+		var marker = new google.maps.Marker({
+		position: uluru,
+		map: map
+		});
+	}
+</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFyWozOx78ib6pojVTDzr4CDTBHemst38&callback=initMap">
+</script>
