@@ -28,7 +28,7 @@ CREATE TABLE Restaurant(
 	description VARCHAR,
 	idOwner TEXT NOT NULL REFERENCES User(idUser));
 
-INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (0, 'Brasão Cervejaria', 'Baixa', 15, 'Portuguesa', '12:00', '24:00',' asdasd ', 'paulosilva');
+INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (0, 'Brasão Cervejaria', 'Baixa', 15, 'Portuguesa', '12:00', '4:00','asdasd', 'paulosilva');
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description,idOwner) VALUES (1, 'Flow Restaurant & Bar', 'Cedofeita', 35, 'Mediterranica', '20:00', '24:00','', 'paulosilva');
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end, description,idOwner) VALUES (2, 'DeGema', 'Baixa', 10, 'Hamburgueria', '12:00' ,'24:00','', 'paulosilva');
 INSERT INTO Restaurant(idRestaurant, name, location, price, category, open, end,description, idOwner) VALUES (3, 'Costa Coffee', 'Baixa', 4, 'Pastelaria', '09:00' ,'24:00', '','paulosilva');

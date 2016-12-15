@@ -8,7 +8,7 @@
 		
 			echo '<h1> Owner: ' . $result['idOwner'] . '</h1>';
 			echo '<h1> Name: ' . $result['name'] . '</h1>';
-			echo '<p id = location> Location : ' . $result['location'] . '</p>';
+			echo '<p id="location"> Location : ' . $result['location'] . '</p>';
 			echo '<p> Category: ' . $result['category'] . '</p>';
 			echo '<p> Working hours: ' . $result['open'] . '-' . $result['end'] . '</p>';
 			echo '<p> Description: ' . $result['description'] . '</p>';
@@ -17,6 +17,7 @@
 			if($avg[0] != NULL){
 				echo '<p> Average Score: ' .$avg[0]. '</p>';
 			}
+			else echo'<p> No scores yet </p>';
 
 			
 			if (isset($_SESSION['idUser'])){
@@ -62,7 +63,7 @@
 			}			
 		?>
 		<h3>Check location on google maps here!</h3>
-    <div id="map"></div>
+		<div id="map"></div>
 	</div>
 </div>
 
