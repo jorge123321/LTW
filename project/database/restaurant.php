@@ -67,6 +67,12 @@
  		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
  		$stmt->execute(array($idRestaurant));
  	}
+	
+	function deleteReviewItem($db, $idReview){
+		deleteReply($db, $idReview);
+		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idReview = ?');
+		$stmt->execute(array($idReview));	
+	}
  	
  	function deleteRestaurant($db,$idRestaurant) {
  		deleteReview($db,$idRestaurant);
@@ -95,4 +101,12 @@
 		$result = $stmt->fetchAll();
 		return $result;
 	}
+	
+	function searchReview($db, $idRestaurant, $idUser){
+		$stmt = $db->prepare('SELECT * FROM RestaurantReview WHERE idReviewer = ? AND idRestaurant=?');
+		$stmt->execute(array($idUser, $idRestaurant));
+		$result = $stmt->fetch();
+		return $result;
+	}
+	
 ?>	

@@ -1,5 +1,7 @@
 <?php
 	session_start();
+				include_once getcwd() . "/database/connection.php";
+			include_once getcwd() . "/database/restaurant.php";
 ?>
 
 <div id="content">
@@ -19,9 +21,10 @@
 			}
 			else echo'<p> No scores yet </p>';
 
-			
+
 			if (isset($_SESSION['idUser'])){
 				if($_SESSION['type'] == 'reviewer'){
+					if(searchReview($db, $_GET['id'], $_SESSION['idUser']) == NULL){
 				?>
 					<form action="add_review_action.php" method="post">
 						<input type="hidden" name="id" value= <?php echo $_GET['id']; ?> />
@@ -31,19 +34,25 @@
 					</form>
 					
 					<?php
+					}
 				}
 			}
-			
-			include_once getcwd() . "/database/connection.php";
-			include_once getcwd() . "/database/restaurant.php";
-			
+						
 			$review = getRestaurantReview($db, $_GET['id']);
 			
 			foreach($review as $rev){
 				echo '<p>From: ' . $rev['idReviewer'] . '</p>';
 				echo '<p>Score: ' . $rev['score'] . '</p>';
 				echo '<p>Review: ' . $rev['text'] . '</p>';
-				
+				if($_SESSION['idUser'] == $rev['idReviewer']){
+					?>
+					<form action="delreview_action.php" method="post">
+						<input type="hidden" name="id" value= <?php echo $rev['idReview']; ?> />
+						<button type="submit"></button>
+					</form>
+					
+					<?php
+				}
 				$reply = getReply($db,$rev['idReview']);
 				foreach($reply as $rep){
 					echo '<p>From: ' . $rep['idReplyer'] . '</p>';
