@@ -26,5 +26,9 @@
 			</textarea>
 			<button type="submit"> Create </button>
 		</form>
+		<form id="submit" action="delrestaurant_action.php" method="post">
+			<input type="hidden" name="id" value= <?php echo $_GET['id']; ?> />
+			<button type="submit"> Delete </button>
+		</form>
 	</div>
 </div>
