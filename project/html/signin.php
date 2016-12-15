@@ -11,7 +11,7 @@
 		<div id="sitename">RReview</div>
 		<form id="loginform" action="" method="post">
 		<input id="username" type="text"  placeholder="username" required></br>
-		<input id="password" type="text" placeholder="password" required></br>
+		<input id="password" type="password" placeholder="password" required></br>
 		<input id="loginb" type="submit" value="Login">
 		</form></br>
 		<a href="register.php"> 
