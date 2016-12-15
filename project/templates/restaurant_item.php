@@ -5,18 +5,19 @@
 <div id="content">
 	<div id="item">
 		<?php
-
-			echo '<h1>' . $_SESSION['idUser'] . '</h1>';
-			echo '<h1>' . $result['idOwner'] . '</h1>';
-			echo '<h1>' . $result['name'] . '</h1>';
-			echo '<p>' . $result['location'] . '</p>';
-			echo '<p>' . $result['category'] . '</p>';
-			echo '<p>' . $result['open'] . '-' . $result['end'] . '</p>';
-			echo '<p>' . $result['description'] . '</p>';
+		
+			echo '<h1> Owner: ' . $result['idOwner'] . '</h1>';
+			echo '<h1> Name: ' . $result['name'] . '</h1>';
+			echo '<p> Location : ' . $result['location'] . '</p>';
+			echo '<p> Category: ' . $result['category'] . '</p>';
+			echo '<p> Working hours: ' . $result['open'] . '-' . $result['end'] . '</p>';
+			echo '<p> Description: ' . $result['description'] . '</p>';
 			
 			$avg = averageScoreRestaurant($db, $_GET['id']);
-			
-			echo $avg; echo '<br><br><br>';
+			if($avg[0] != NULL){
+				echo '<p> Average Score: ' .$avg[0]. '</p>';
+			}
+
 			
 			if (isset($_SESSION['idUser'])){
 				if($_SESSION['type'] == 'reviewer'){

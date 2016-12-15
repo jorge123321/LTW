@@ -21,8 +21,8 @@
 			Description:<br>
 			<textarea name="description" rows="5" cols="50">
 			</textarea>
-			<!--Add Images:<br>
-			<input type="file" name="image[]" multiple> <br>-->
+			Add Images:<br>
+			<input type="file" name="image[]" multiple="multiple"> <br>
 			<br><button type="submit"> Create </button>
 		</form>
 	</div>

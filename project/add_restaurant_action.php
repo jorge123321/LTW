@@ -1,15 +1,24 @@
 <?php
     include ('templates/header.php');    
 	include_once('database/connection.php');
+	include_once('database/restaurant.php');
 	session_start();
 ?>
 	<div id="content">
-<?php
-		/*$n_files = count($_FILES['image']['name']);
-		for($i=0; $i<$n_files; $i++) {
-		 move_uploaded_file($_FILES['image']['tmp_name'][$i],"images/" . $_FILES['image']['name']);
-		 $path[$i] =  ("images/" . $_FILES['image']['name']);
-		}*/
+<?php		
+		$result = getRestaurantID($db, $_POST['name']);
+		
+		$n_files = count($_FILES['image']['name']);
+		echo '<p>' . $n_files . '</p>';
+		for($i=0; $i<$n_files; $i++){
+			$extension = pathinfo($_FILES['image']['name'][$i], PATHINFO_EXTENSION);
+			$picturePath = 'images/' . $_POST['name'] . '_' . $i . '.' . $extension;
+			if (move_uploaded_file($_FILES['image']['tmp_name'][$i], $picturePath)){
+				$stmt = $db->prepare('INSERT INTO Photo (idPhoto, idRestaurant, idOwner, text) VALUES (NULL,?,?,?)');
+				$stmt->execute(array($result['idRestaurant'], $_SESSION['idUser'], $picturePath));
+				echo '<p> added photos success</p>';
+			}
+		}
 		
 		echo '<p>' . $_POST['name'] . '</p>';
 		echo '<p>' . $_POST['location'] . '</p>';
@@ -22,8 +31,6 @@
 		$stmt = $db->prepare('INSERT INTO Restaurant (idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (NULL,?,?,?,?,?,?,?,?)');
 		$stmt->execute(array($_POST['name'],$_POST['location'],$_POST['price'],$_POST['category'],$_POST['open'],$_POST['close'],$_POST['description'],$_SESSION['idUser']));
 		echo '<p>The restaurant was created sucessfully!</p>';
-		
-		$result = getRestaurantID($db, $_POST['name']);
 		
 		/*foreach($path as $tmpath){
 		$stmt = $db->prepare('INSERT INTO Photo (idPhoto, idRestaurant, idOwner, text) VALUES (NULL,?,?,?)');
