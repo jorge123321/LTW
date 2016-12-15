@@ -55,7 +55,15 @@
 		return $result;
 	}
 	
+	function deleteReply($db,$idReview) {
+ 		$stmt = $db->prepare('DELETE FROM Reply WHERE idReview = ?');
+ 		$stmt->execute(array($idReview));
+ 	}
+
 	function deleteReview($db,$idRestaurant) {
+		$reviews = getRestaurantReview($db,$idRestaurant);
+		foreach ($reviews as $review)
+			deleteReply($db,$review['idReview']);
  		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
  		$stmt->execute(array($idRestaurant));
  	}
