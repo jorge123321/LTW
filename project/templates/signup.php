@@ -2,13 +2,13 @@
 		<h1> Make an account.</h1>
 		<div id="signupForm">
 			<form id="submit" action="signup_action.php" method="post">
-				Username:
+				Username:</br>
 				<input type="text" class="uinfo" name="username" required><br>
-				Name:
+				Name:</br>
 				<input type="text" class="uinfo" name="name" required><br>
-				Pass:
+				Pass:</br>
 				<input type="password" class="uinfo" name="pass" required><br>
-				Age:
+				Age:</br>
 				<input type="number" name="age" value="25" min="18" max="90" step="1" required><br>
 				<div class="checkbox">
 					Gender:<br>
