@@ -30,10 +30,11 @@
 		echo '<p>'.$_SESSION['idUser'].'</p><br>';
 		$result = $stmt->fetch();
 		echo '<p>'.$result['pass'].'</p><br>';
-		if (($_POST['npass'] == $_POST['npass2']) && (sha1($_POST['cpass']) == $result['pass']) )
+		if (($_POST['npass'] == $_POST['npass2']) && password_verify($_POST['cpass'],$result['pass']))
 		{
+			$options = ['cost' => 12];
 			$stmt = $db->prepare("UPDATE User SET pass=? WHERE idUser=?");
-			$stmt->execute(array(sha1($_POST['npass']),$_SESSION['idUser']));
+			$stmt->execute(array(password_hash($_POST['npass'], PASSWORD_DEFAULT, $options),$_SESSION['idUser']));
 			echo '<p>Password changed successfully.</p><br>';
 		}
 		else{
