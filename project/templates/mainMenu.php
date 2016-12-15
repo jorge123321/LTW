@@ -11,7 +11,7 @@
 		
 				foreach( $result as $row) {
 			?>
-				<div id = "rest">
+				<div class = "rest">
 			<?php
 					echo '<p><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></p>';
 					echo '<p>Category:' .$row['category']. ' | Situated on: ' . $row['location'] . '<p>';
