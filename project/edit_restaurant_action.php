@@ -33,8 +33,8 @@
 		echo '<p>Open changed.</p><br>';
 	}
 	
-	if ($result['close'] != $_POST['close']){
-		$stmt = $db->prepare("UPDATE Restaurant SET close=? WHERE idRestaurant=?");
+	if ($result['end'] != $_POST['close']){
+		$stmt = $db->prepare("UPDATE Restaurant SET end=? WHERE idRestaurant=?");
 		$stmt->execute(array($_POST['close'],$_POST['id_rest']));
 		echo '<p>Close changed.</p><br>';
 	}
