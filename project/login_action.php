@@ -1,7 +1,8 @@
 <?php
 	include_once('database/connection.php');
+	$options = ['cost' => 12];	
 	$stmt = $db->prepare('SELECT idUser, name, pass, age, gender, photo, type FROM User WHERE idUser = ? AND pass = ?');
-	$stmt->execute(array($_POST['username'],sha1($_POST['pass'])));
+	$stmt->execute(array($_POST['username'],password_hash($_POST['pass'], PASSWORD_DEFAULT, $options));
 	$result = $stmt->fetch();
 	if ($result != null){
 		session_start();
