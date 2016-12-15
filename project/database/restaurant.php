@@ -57,18 +57,18 @@
 	
 	function deleteReview($db,$idRestaurant) {
  		$stmt = $db->prepare('DELETE FROM RestaurantReview WHERE idRestaurant = ?');
- 		$stmt->execute($idRestaurant);
+ 		$stmt->execute(array($idRestaurant));
  	}
  	
  	function deleteRestaurant($db,$idRestaurant) {
  		deleteReview($db,$idRestaurant);
  		$stmt = $db->prepare('DELETE FROM Restaurant WHERE idRestaurant = ?');
- 		$stmt->execute($idRestaurant);
+ 		$stmt->execute(array($idRestaurant));
  	}
 
 	function averageScoreRestaurant($db,$idRestaurant) {
  		$stmt = $db->prepare('SELECT avg(score) FROM RestaurantReview WHERE idRestaurant = ?');
- 		$stmt->execute($idRestaurant);
+ 		$stmt->execute(array($idRestaurant));
 		$result = $stmt->fetch();
 		return $result;
  	}
