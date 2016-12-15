@@ -50,11 +50,9 @@ CREATE TABLE Reply(
 	idReplyer TEXT NOT NULL REFERENCES User(idUser),
 	text VARCHAR
 );
-
-
 CREATE TABLE Photo(
-	idReply INTEGER PRIMARY KEY AUTOINCREMENT,
-	idReview INTEGER REFERENCES RestaurantReview(idReview),
-	idReplyer TEXT NOT NULL REFERENCES User(idUser),
+	idPhoto INTEGER PRIMARY KEY AUTOINCREMENT,
+	idRestaurant INTEGER REFERENCES Restaurant(idRestaurant),
+	idOwner TEXT NOT NULL REFERENCES User(idUser),
 	text VARCHAR
 );

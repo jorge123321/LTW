@@ -5,6 +5,12 @@
 ?>
 	<div id="content">
 <?php
+		/*$n_files = count($_FILES['image']['name']);
+		for($i=0; $i<$n_files; $i++) {
+		 move_uploaded_file($_FILES['image']['tmp_name'][$i],"images/" . $_FILES['image']['name']);
+		 $path[$i] =  ("images/" . $_FILES['image']['name']);
+		}*/
+		
 		echo '<p>' . $_POST['name'] . '</p>';
 		echo '<p>' . $_POST['location'] . '</p>';
 		echo '<p>' . $_POST['price'] . '</p>';
@@ -16,6 +22,14 @@
 		$stmt = $db->prepare('INSERT INTO Restaurant (idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (NULL,?,?,?,?,?,?,?,?)');
 		$stmt->execute(array($_POST['name'],$_POST['location'],$_POST['price'],$_POST['category'],$_POST['open'],$_POST['close'],$_POST['description'],$_SESSION['idUser']));
 		echo '<p>The restaurant was created sucessfully!</p>';
+		
+		$result = getRestaurantID($db, $_POST['name']);
+		
+		/*foreach($path as $tmpath){
+		$stmt = $db->prepare('INSERT INTO Photo (idPhoto, idRestaurant, idOwner, text) VALUES (NULL,?,?,?)');
+		$stmt->execute(array($result['idRestaurant'], $_SESSION['idUser'], $tmpath));
+		echo '<p> added photos success</p>';
+		}*/
 ?>
 	</div>
 <?php

@@ -20,6 +20,13 @@
 		return $result;
 	}
 	
+	function getRestaurantID($db, $name){
+		$stmt = $db->prepare('SELECT * FROM Restaurant WHERE name = ?');
+		$stmt->execute(array($name));
+		$result = $stmt->fetch()[0];
+		return $result;
+	}
+	
 	function getAllCategories($db){
 		$stmt = $db->prepare('SELECT category FROM Restaurant GROUP BY category');
 		$stmt->execute();

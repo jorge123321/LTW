@@ -19,9 +19,11 @@
 			Closing Hours:<br>
 			<input type ="number" name="close" min="0" max="24" step="1"><br>
 			Description:<br>
-			<textarea name="description" rows="5" cols="50" placeholder="Add a short description">
+			<textarea name="description" rows="5" cols="50">
 			</textarea>
-			<button type="submit"> Create </button>
+			<!--Add Images:<br>
+			<input type="file" name="image[]" multiple> <br>-->
+			<br><button type="submit"> Create </button>
 		</form>
 	</div>
 </div>
