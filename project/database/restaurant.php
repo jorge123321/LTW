@@ -60,6 +60,37 @@
 		return $result;
 	}
 	
+	function updateNameR($db, $name, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET name=? WHERE idRestaurant=?");
+		$stmt->execute(array($name,$idRestaurant));
+	}
+	
+	function updateLocationR($db, $location, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET location=? WHERE idRestaurant=?");
+		$stmt->execute(array($location,$idRestaurant));
+	}
+	function updatePriceR($db, $price, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET price=? WHERE idRestaurant=?");
+		$stmt->execute(array($price,$idRestaurant));
+	}
+	
+	function updateOpenR($db, $open, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET open=? WHERE idRestaurant=?");
+		$stmt->execute(array($open,$idRestaurant));
+	}
+	
+	function updateCloseR($db, $close, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET end=? WHERE idRestaurant=?");
+		$stmt->execute(array($close,$idRestaurant));
+	}
+	
+	function updateDescriptionR($db, $description, $idRestaurant){
+		$stmt = $db->prepare("UPDATE Restaurant SET description=? WHERE idRestaurant=?");
+		$stmt->execute(array($description,$idRestaurant));
+	}
+	
+
+	
 
 	
 ?>	
