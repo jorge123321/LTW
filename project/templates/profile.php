@@ -13,7 +13,8 @@
 				<input type="text" name="npass" value=""><br>
 				Confirm new password:
 				<input type="text" name="npass2" value=""><br>
-				<input id="uinfoupdate" type="submit" value="Update">
+				<input id="uinfoupdate" type="submit" name="update" value="Update">
+				<input id="uinfoupdate" type="submit" name="delete" value="Delete Account" />
 			</form>
 		</div>
 	</div>

@@ -2,10 +2,14 @@
 	session_start();
 	include ('templates/header.php');  
 	include_once('database/connection.php');
+	include_once('database/restaurant.php');
+	
 	
 	?>
 	<div id="content">
 	<?php
+	if (isset($_POST['update'])) {
+	
 	if ($_SESSION['name'] != $_POST['name']){
 		$stmt = $db->prepare("UPDATE User SET name=? WHERE idUser=?");
 		$stmt->execute(array($_POST['name'],$_SESSION['idUser']));
@@ -35,7 +39,11 @@
 		else{
 			echo '<p>Incorrect current password/ New password does not match. </p><br>';
 		}
-	}	
+	}
+	} else if (isset($_POST['delete'])) {
+			deleteUser($db,$_SESSION['idUser']);
+			header("Location: logout_action.php");
+	}
 ?>
 	</div>
 <?php
