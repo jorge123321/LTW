@@ -5,4 +5,5 @@
 	include('templates/header.php');
 	include('templates/signup.php');
 	include('templates/footer.php');
- ?>
+?>
+
