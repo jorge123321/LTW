@@ -14,6 +14,9 @@
 			echo '<p>' . $result['open'] . '-' . $result['end'] . '</p>';
 			echo '<p>' . $result['description'] . '</p>';
 			
+			$avg = averageScoreRestaurant($db, $_GET['id']);
+			
+			echo $avg; echo '<br><br><br>';
 			
 			if (isset($_SESSION['idUser'])){
 				if($_SESSION['type'] == 'reviewer'){
