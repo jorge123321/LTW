@@ -27,7 +27,7 @@
 						&& (strlen(trim($search)) != 0) ){
 						$countResults++;
 			?>
-					<div id = "rest">
+					<div class = "rest">
 			<?php
 						echo '<p><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></p>';
 						echo '<p>Category:' .$row['category']. ' Situated on: ' . $row['location'] . '<p>';
@@ -48,21 +48,6 @@
 		</ul>
 	</div>
 </div>
-	
-	<div class="sidebar">
-			<h2>Categorias</h2>
-			<ul class="toolbar">
-				<?php
-					include_once getcwd() . "/database/connection.php";
-					include_once getcwd() . "/database/restaurant.php";
-					$result = getAllCategories($db);
-					
-					foreach($result as $row) {
-						echo '<li> '. $row['category']. '</li>';
-					}
-				?>
-			</ul>
-	</div>
 <?php
 	include('templates/footer.php');
  ?>
