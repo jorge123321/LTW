@@ -77,7 +77,7 @@
 				$i=0;
 			if(photos != NULL){
 				foreach($photos as $photo){
-					echo '<img src="images/' . $result['name'] . '_' .$i. '" width="150px" height="150px">';
+					echo '<img src="images/' . $result['name'] . '_' .$i. '" width="50px" height="50px">';
 					$i++;
 				}
 			}

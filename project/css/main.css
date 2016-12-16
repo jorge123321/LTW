@@ -270,3 +270,7 @@ textarea {
 	border-radius: 30px;
 }
 
+#photos{
+	display:inline-block;
+}
+

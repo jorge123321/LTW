@@ -11,7 +11,11 @@
 			<?php				
 					echo '<li id="restaurant_name_owner"><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></li>';
 					echo '<li id="restaurant_edit_owner"><a class="feed" href="edit_restaurant.php?id=' . $row['idRestaurant'] . '"> EDIT</a></li>';
-					echo '<img id="restaurant_image_owner" src="images/background" alt="Image" width="150px">';
+					$photos = getPhotos($db, $row['idRestaurant']);
+
+					if($photos == NULL)
+					echo '<img src="images/background" alt="Image" width="150px">';
+				else echo '<img src="images/' . $row['name'] . '_0" width="150px" height="150px" >';
 			?>
 				</div>			
 			<?php	

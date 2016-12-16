@@ -41,6 +41,7 @@
  	
  	function deleteRestaurant($db,$idRestaurant) {
  		deleteReview($db,$idRestaurant);
+		//delPhotos($db,$idRestaurant);
  		$stmt = $db->prepare('DELETE FROM Restaurant WHERE idRestaurant = ?');
  		$stmt->execute(array($idRestaurant));
  	}
@@ -58,6 +59,12 @@
 		$stmt->execute(array($idRestaurant));
 		$result = $stmt->fetchAll();
 		return $result;
+	}
+	
+	function delPhotos($db, $idRestaurant){
+		$stmt = $db->prepare('DELETE * FROM Photo WHERE idRestaurant = ?');
+		$stmt->execute(array($idRestaurant));
+
 	}
 	
 	function updateNameR($db, $name, $idRestaurant){
