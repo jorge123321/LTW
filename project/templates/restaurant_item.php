@@ -6,6 +6,7 @@
 
 <div id="content">
 	<div id="item">
+		<div class="rest" id="restaurant_item_info">
 		<?php
 		
 			echo '<h1> Owner: ' . $result['idOwner'] . '</h1>';
@@ -20,17 +21,23 @@
 				echo '<p> Average Score: ' .$avg[0]. '</p>';
 			}
 			else echo'<p> No scores yet </p>';
-
+		?> </div>
+		<?php
 
 			if (isset($_SESSION['idUser'])){
 				if($_SESSION['type'] == 'reviewer'){
 					if(searchReview($db, $_GET['id'], $_SESSION['idUser']) == NULL){
-				?>
-					<form action="add_review_action.php" method="post">
+		?>
+					<form action="add_review_action.php" class="rest" id="rest_review_form" method="post">
+						Write a review:
 						<input type="hidden" name="id" value= <?php echo $_GET['id']; ?> />
-						<textarea name="comment" rows="5" cols="50"></textarea>
-						Score:<input type ="number" name="score" min="0" max="5" step="1"><br>
-						<button type="submit"><br><br><br></button>
+						<textarea name="comment" rows="1" cols="50" required></textarea>
+						<div id="review_score">
+						<br>Score:<input type ="number" name="score" min="0" max="5" step="1" required><br>
+						</div>
+						<div id="review_button_div">
+						<button type="submit" class="form_button"><br><br><br></button>
+						</div>
 					</form>
 					
 					<?php
@@ -39,14 +46,19 @@
 			}
 						
 			$review = getRestaurantReview($db, $_GET['id']);
-			
+			?> </br><?php
 			foreach($review as $rev){
+					?><div id="review" class="rest">
+						<div id="review_text">
+				<?php
+				
 				echo '<p>From: ' . $rev['idReviewer'] . '</p>';
 				echo '<p>Score: ' . $rev['score'] . '</p>';
 				echo '<p>Review: ' . $rev['text'] . '</p>';
+				?> </div> <?php
 				if($_SESSION['idUser'] == $rev['idReviewer']){
 					?>
-					<form action="delreview_action.php" method="post">
+					<form action="delreview_action.php" id="delete_review"  method="post">
 						<input type="hidden" name="id" value= <?php echo $rev['idReview']; ?> />
 						<button type="submit"></button>
 					</form>
@@ -69,6 +81,7 @@
 						</form>
 					<?php
 				}
+				?> </div> <?php
 			}			
 		?>
 		<div id="photos">

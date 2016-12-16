@@ -13,7 +13,7 @@
 		$stmt = $db->prepare('INSERT INTO RestaurantReview (idReview, idReviewer, idRestaurant, score, text) VALUES (NULL,?,?,?,?)');
 		$stmt->execute(array($_SESSION['idUser'], $_POST['id'], $_POST['score'], $_POST['comment']));
 		
-		echo '<p>The restaurant was created sucessfully!</p>';
+		echo '<p>Comment made sucessfully!</p>';
 ?>
 	</div>
 <?php

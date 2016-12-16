@@ -259,6 +259,37 @@ textarea {
    padding:2px;
 }
 
+/*
+Restaurant info CSS
+*/
+
+#item{display:inline;}
+/* Review Text Box */
+#review_score{
+	text-align:right;
+	margin-right:15px;
+}
+
+#review_button_div{
+	text-align:right;
+	margin-right:15px;
+}
+
+#review_button{
+	border:0px;
+	text-align:center;
+	border-top-left-radius:2px;
+	border-top-right-radius:2px;
+	border-bottom-left-radius:2px;
+	border-bottom-right-radius:2px;
+	padding:2px;
+}
+
+
+#delete_review{
+	float:right;
+}
+
 #replyForm{
 	display: none;
 	position: fixed;
