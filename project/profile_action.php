@@ -22,18 +22,21 @@
 		echo '<p>Age changed.</p><br>';
 	}
 	
+	
 	if ( ( $_POST['cpass'] && $_POST['npass'] && $_POST['npass2']  ) != ""){
 		$result = getPass($db, $_SESSION['idUser']);
 		
-		if (($_POST['npass'] == $_POST['npass2']) && (sha1($_POST['cpass']) == $result['pass']) )
+		if (($_POST['npass'] == $_POST['npass2']) && password_verify($_POST['cpass'],$result['pass']))
 		{
-			updatePass($db, sha1($_POST['npass']),$_SESSION['idUser']);
+			$options = ['cost' => 12];
+			updatePass($db, password_hash($_POST['npass'], PASSWORD_DEFAULT, $options),$_SESSION['idUser']);
 			echo '<p>Password changed successfully.</p><br>';
 		}
 		else{
 			echo '<p>Incorrect current password/ New password does not match. </p><br>';
 		}
-	}	
+	}
+	
 	} else if (isset($_POST['delete'])) {
 			deleteUser($db,$_SESSION['idUser']);
 			header("Location: logout_action.php");
