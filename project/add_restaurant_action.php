@@ -25,7 +25,6 @@ session_start();
 			if (move_uploaded_file($_FILES['image']['tmp_name'][$i], $picturePath)){
 				$stmt = $db->prepare('INSERT INTO Photo (idPhoto, idRestaurant, idOwner, text) VALUES (NULL,?,?,?)');
 				$stmt->execute(array($result['idRestaurant'], $_SESSION['idUser'], $picturePath));
-				echo '<p> added photos success</p>';
 			}
 		}
 ?>
