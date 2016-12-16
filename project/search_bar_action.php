@@ -31,7 +31,10 @@
 			<?php
 						echo '<p><a class="feed" href="restaurant_item.php?id=' . $row['idRestaurant'] . '">' . $row['name']  .  '</a></p>';
 						echo '<p>Category:' .$row['category']. ' Situated on: ' . $row['location'] . '<p>';
-						echo '<img src="images/background" alt="Image" width="150px">';
+						$photos = getPhotos($db, $row['idRestaurant']);
+						if($photos == NULL)
+							echo '<img src="images/background" alt="Image" width="150px">';
+						else echo '<img src="images/' . $row['name'] . '_0" width="150px" height="150px" >';
 			?>
 					</div>
 			<?php
