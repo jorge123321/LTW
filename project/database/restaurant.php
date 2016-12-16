@@ -10,6 +10,11 @@
 		$result = $stmt->fetchAll();
 		return $result;
 	}
+	
+	function addRestaurant($db, $name,$location,$price,$category,$open,$close,$description,$idUser){
+		$stmt = $db->prepare('INSERT INTO Restaurant (idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (NULL,?,?,?,?,?,?,?,?)');
+		$stmt->execute(array($name,$location,$price,$category,$open,$close,$description,$idUser));
+	}
 
 	function getRestaurantItem($db, $id){
 		$stmt = $db->prepare('SELECT * FROM Restaurant WHERE idRestaurant = ?');

@@ -1,7 +1,8 @@
 <?php
+session_start();
     include ('templates/header.php');    
 	include_once('database/connection.php');
-	session_start();
+	
 ?>
 	<div id="content">
 <?php

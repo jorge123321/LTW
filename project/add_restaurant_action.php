@@ -1,31 +1,24 @@
 <?php
+session_start();
     include ('templates/header.php');    
 	include_once('database/connection.php');
 	include_once('database/restaurant.php');
-	session_start();
+	
 ?>
 	<div id="content">
 <?php		
 
-		
-		echo '<p>' . $_POST['name'] . '</p>';
-		echo '<p>' . $_POST['location'] . '</p>';
-		echo '<p>' . $_POST['price'] . '</p>';
-		echo '<p>' . $_POST['category'] . '</p>';
-		echo '<p>' . $_POST['open'] . '</p>';
-		echo '<p>' . $_POST['close'] . '</p>';
-		echo '<p>' . $_POST['description'] . '</p>';
-		echo '<p>' . $_SESSION['idUser'] . '</p>';
-		$stmt = $db->prepare('INSERT INTO Restaurant (idRestaurant, name, location, price, category, open, end, description, idOwner) VALUES (NULL,?,?,?,?,?,?,?,?)');
-		$stmt->execute(array($_POST['name'],$_POST['location'],$_POST['price'],$_POST['category'],$_POST['open'],$_POST['close'],$_POST['description'],$_SESSION['idUser']));
+		if(getRestaurantID($db,  $_POST['name']) != NULL){
+			echo '<p> Restaurant already exists with that name! </p>';
+		}
+		else {
+		addRestaurant($db,$_POST['name'],$_POST['location'],$_POST['price'],$_POST['category'],$_POST['open'],$_POST['close'],$_POST['description'],$_SESSION['idUser']);
 		echo '<p>The restaurant was created sucessfully!</p>';
-		
+		}
 		$result = getRestaurantID($db, $_POST['name']);
-		
-		echo '<p> ZSDADAD' .$result['idRestaurant'] . '</p>';
+
 		
 		$n_files = count($_FILES['image']['name']);
-		echo '<p>' . $n_files . '</p>';
 		for($i=0; $i<$n_files; $i++){
 			$extension = pathinfo($_FILES['image']['name'][$i], PATHINFO_EXTENSION);
 			$picturePath = 'images/' . $_POST['name'] . '_' . $i . '.' . $extension;

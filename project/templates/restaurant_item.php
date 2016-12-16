@@ -74,6 +74,7 @@
 					?>
 						<form id="submit" action="add_reply_action.php" method="post">
 						<input type="hidden" name="id_review" value= <?php echo $rev['idReview']; ?> />
+						<input type="hidden" name="id_user" value= <?php echo $_SESSION['idUser']; ?> />
 							Reply:<br>
 							<textarea name="reply" rows="5" cols="50">
 							</textarea>
